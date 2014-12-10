@@ -1,0 +1,123 @@
+﻿<section id="dashboard-view" class="mainbar" data-ng-controller="dashboard as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="today-datas">
+                        <li class="blightblue">
+                            <div class="pull-left"><i class="fa fa-plane"></i></div>
+                            <div class="datas-text pull-right">
+                                <span class="bold">May 18 - 19, 2015</span> Castle Resort, Neverland
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+
+                        <li class="borange"><a href="#/sessions">
+                            <div class="pull-left"><i class="fa fa-calendar"></i></div>
+                            <div class="datas-text pull-right">
+                                <span class="bold">{{vm.sessionCount}}</span> Sessions
+                            </div>
+                            <div class="clearfix"></div></a> 
+                        </li>
+
+                        <li class="bgreen">
+                            <a href="#/attendees">
+                                <div class="pull-left"><i class="fa fa-group"></i></div>
+                                <div class="datas-text pull-right">
+                                    <span class="bold">{{vm.attendeeCount}}</span> Attendees
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </li>
+
+                        <li class="bviolet">
+                            <a href="#/speakers">
+                                <div class="pull-left"><i class="fa fa-microphone"></i></div>
+                                <div class="datas-text pull-right">
+                                    <span class="bold">{{vm.speakerCount}}</span> Speakers
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="widget wgreen">
+                        <div data-cc-widget-header title="{{vm.map.title}}"
+                             allow-collapse="true"></div>
+                        <div class="widget-content">
+                            <div class="map">
+                                <iframe width="400" height="230" frameborder="0" style="border:0" marginheight="0" marginwidth="0"
+                                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3314.7375083454435!2d-118.1798924!3d33.8190864!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dd33bfa8d1b419%3A0x60f9a155ee7f4a0e!2s1051+E+Wardlow+Rd%2C+Long+Beach%2C+CA+90807!5e0!3m2!1sen!2sus!4v1417362677070"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="widget wlightblue">
+                        <div data-cc-widget-header title="{{vm.speakers.title}}"
+                             allow-collapse="true"></div>
+                        <div class="widget-content text-center text-info">
+                            <carousel class="carousel-inner" interval="vm.speakers.interval">
+                                <slide data-ng-repeat="s in vm.speakers.list" active="s.active">
+                                    <img data-cc-img-person="{{s.imageSource}}" class="img-polaroid">
+                                    <div class="carousel-caption">
+                                        <h4>{{s.fullName}}</h4>
+                                    </div>
+                                </slide>
+                            </carousel>
+                        </div>
+                    </div>
+                    <div class="widget-foot">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="widget wviolet">
+                        <div data-cc-widget-header title="{{vm.content.title}}"
+                             allow-collapse="true"></div>
+                        <div class="widget-content">
+                            <div class="widget-content referrer">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th><a data-ng-click="vm.content.setSort('track')" href="">Track</a></th>
+                                            <th><a data-ng-click="vm.content.setSort('count')" href="">Sessions</a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-ng-repeat="t in vm.content.tracks | orderBy:vm.content.predicate:vm.content.reverse">
+                                            <td>{{t.track}}</td>
+                                            <td>{{t.count}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="widget wgreen">
+                        <div data-cc-widget-header title="{{vm.news.title}}"
+                             allow-collapse="true"></div>
+                        <div class="widget-content text-center text-info">
+                            <small>{{vm.news.description}}</small>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
