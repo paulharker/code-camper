@@ -10,8 +10,8 @@
         var logSuccess = common.logger.getLogFn(controllerId, 'success');
         var events = config.events;
         vm.busyMessage = 'Please wait ...';
-        vm.showSplash = true;
         vm.isBusy = true;
+        vm.showSplash = true;
 
         vm.spinnerOptions = {
             radius: 40,
@@ -27,7 +27,7 @@
         activate();
 
         function activate() {
-            logSuccess('CodeCamper Angular loaded!', null, true);
+           logSuccess('CodeCamper Angular loaded!', null, true);
             common.activateController([], controllerId)
                .then(function () {
                   vm.showSplash = false;
